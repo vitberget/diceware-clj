@@ -9,14 +9,17 @@
   (let [dice-strings (d/five-dice-strings n)
         values (d/into-empty-map dice-strings)
         values (f/populate values file)]
-    (->> dice-strings
-         (map (fn [v] (get values v)))
-         (string/join " "))))
+    {:dice     dice-strings
+     :password (->> dice-strings
+                    (map (fn [v] (get values v)))
+                    (string/join " "))}))
 
 (comment
   (diceware 5 "resources/diceware-sv.txt")
   )
 
 (defn -main [& args]
-  (println (diceware (Integer/parseInt (first args))
-                     (second args))))
+  (let [dw (diceware (Integer/parseInt (first args))
+                     (second args))]
+    (println "Dice:" (string/join ", " (:dice dw)))
+    (println "Password:" (:password dw))))
