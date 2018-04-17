@@ -2,9 +2,15 @@
   (:gen-class)
   (:require [clojure.string :as string]
             [diceware.dice :as d]
-            [diceware.file :as f]))
+            [diceware.file :as f]
+            [ysera.test :refer [is=]]))
 
 (defn get-replace-character
+  {:test (fn []
+           (is= (get-replace-character 1 1) \~)
+           (is= (get-replace-character 6 3) \})
+           (is= (get-replace-character 2 5) \/)
+           (is= (get-replace-character 5 6) \8))}
   [third-roll fourth-roll]
   (-> ["~!#$%^"
        "&*()-="
