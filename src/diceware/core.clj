@@ -20,6 +20,11 @@
 
 (defn -main [& args]
   (let [dw (diceware (Integer/parseInt (first args))
-                     (second args))]
+                     (second args))
+        pw (:password dw)]
     (println "Dice:" (string/join ", " (:dice dw)))
-    (println "Password:" (:password dw))))
+    (println "Password:" pw)
+    (when (< (count pw) 17)
+      (println)
+      (println "---!!! Warning, under 17 characters !!!---")
+      (println))))
