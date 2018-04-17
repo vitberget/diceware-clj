@@ -4,10 +4,13 @@ Diceware password generator.
 http://world.std.com/%7Ereinhold/diceware.html
 
 ## Usage
+Two scripts available, both can take an argument for word count in password, defaults to 5.
+  * `run-sv` - uses swedish
+  * `run-en` - uses english
 ```bash
-lein uberjar
+./run-sv
+./run-sv 6
 
-lein run 5 resources/diceware-sv.txt
-#or
-java -jar target/diceware-0.1.0-SNAPSHOT-standalone.jar 5 resources/diceware-sv.txt
+./run-en
+./run-en 6
 ```
