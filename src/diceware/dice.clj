@@ -11,7 +11,7 @@
           ""
           (range 5)))
 
-(defn five-dice-strings
+(defn dice-strings
   [n]
   (reduce (fn [a _]
             (conj a (five-dice-str)))
