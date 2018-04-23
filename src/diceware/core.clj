@@ -57,8 +57,8 @@
         letter-password (assoc password (dec word-roll) new-word)]
     {:words-dice      dice-strings
      :letter-dice     [word-roll letter-roll third-roll fourth-roll]
-     :password        (string/join " " password)
-     :letter-password (string/join " " letter-password)}))
+     :password        (string/join "_" password)
+     :letter-password (string/join "_" letter-password)}))
 
 (defn -main [& args]
   (let [n (first args)
@@ -71,7 +71,7 @@
     (println "Dice char:" (apply str (:letter-dice dw)))
     (println "Password option 1:" pw (str "(" entropy1 " bits of entropy)"))
     (println "Password option 2:" (:letter-password dw) (str "(" entropy2 " bits of entropy)"))
-    (when (< (count pw) 17)
+    (when (< (- (count pw) n -1) 17)
       (println)
       (println "---!!! Warning, under 17 characters !!!---")
       (println))))
